@@ -2,6 +2,9 @@ package com.alveser.springbootspreadsheetmerger.dao;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,13 +39,22 @@ public class CommandLineOutputWrite implements OutputWrite {
 			path = path.replace("\\", separator);
 			path = path.replace("/", separator);
 		}
-		//log.info("File name: "+outputFileName);
-		//log.info("Directory: "+path);
+		log.info("Merged File name: "+outputFileName);
+		log.info("Merged file directory: "+path);
 		File dir = new File(path);
 		mergedFile = new File (dir, outputFileName);
-		mergedFile.getParentFile().mkdirs(); 
+		//mergedFile.getParentFile().mkdirs(); 
 		try {
-			mergedFile.createNewFile();
+			//mergedFile.createNewFile();
+			
+			String fromFile = outputFileName;
+	        String toFile = path+separator+outputFileName;
+
+	        Path source = Paths.get(fromFile);
+	        Path target = Paths.get(toFile);
+			
+	        Files.move(source, target);
+			
 		} catch (IOException e) {
 			log.error("Something went wrong. "+e);
 		}

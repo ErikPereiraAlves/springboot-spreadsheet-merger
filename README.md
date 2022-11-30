@@ -59,6 +59,6 @@ Simply run the already build jar (fat) file, via command line:
 ![Screenshot](picture1.png)
 
 
-3 - As a result you should end up with an extra PDF file named as mergedPDFs + timestamp in the same directory you ran the service.
+3 - As a result you should end up with an extra PDF file named as mergedPDFs + timestamp in the same directory you had your PDF files.
 
 ![Screenshot](picture2.png)
