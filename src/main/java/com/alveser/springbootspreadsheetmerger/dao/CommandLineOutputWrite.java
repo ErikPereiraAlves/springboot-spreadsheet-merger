@@ -36,8 +36,16 @@ public class CommandLineOutputWrite implements OutputWrite {
 			path = path.replace("\\", separator);
 			path = path.replace("/", separator);
 		}
-		log.info("File will be saved in the same directory the application runs. ");
-		mergedFile = new File (path, outputFileName);
+		log.info("File name: "+outputFileName);
+		log.info("Directory: "+path);
+		File dir = new File(path);
+		mergedFile = new File (dir, outputFileName);
+		mergedFile.getParentFile().mkdirs(); 
+		try {
+			mergedFile.createNewFile();
+		} catch (IOException e) {
+			log.error("Something went wrong. "+e);
+		}
 		log.info("Files have been merged to file name of: "+mergedFile);
 		
 		if(null!=mergedFile) {
