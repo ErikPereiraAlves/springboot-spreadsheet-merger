@@ -1,4 +1,4 @@
-@author: Erik Alves 2022-1-27
+@author: Erik Alves 2022-11-27
 
 # SpringBoot microservice to merge PDF files and optionally convert them into different file formats.
 
